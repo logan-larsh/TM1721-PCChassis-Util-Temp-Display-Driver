@@ -1,3 +1,6 @@
+import os
+import json
+
 # Segment mappings for the Titan Micro TM1721 layout on Chip 2 (Left and Right dynamic display)
 # These lists are directly derived from the decompiled C# binary segment logic.
 
@@ -228,3 +231,53 @@ def show4(left_val, right_val, mode):
     apply_digit_segments(lcd_buf, right_digits[2], SMGR1)
     
     return lcd_buf
+
+CALIBRATION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "calibration.json")
+_calibrated_segments = None
+
+def load_calibration():
+    global _calibrated_segments
+    if _calibrated_segments is not None:
+        return _calibrated_segments
+    
+    if os.path.exists(CALIBRATION_FILE):
+        try:
+            with open(CALIBRATION_FILE, "r") as f:
+                _calibrated_segments = json.load(f)
+                return _calibrated_segments
+        except Exception as e:
+            print(f"Error loading calibration.json: {e}")
+    return []
+
+def show5(cpu_util, gpu_util, existing_buf):
+    # Make a copy of existing_buf to avoid mutating the original
+    buf = list(existing_buf)
+    
+    segments = load_calibration()
+    if not segments:
+        return buf
+        
+    half = len(segments) // 2
+    left_segs = segments[:half]
+    right_segs = segments[half:]
+    
+    # Calculate number of dots to light up
+    left_dots = max(0, min(len(left_segs), int(round(cpu_util * len(left_segs) / 100.0))))
+    right_dots = max(0, min(len(right_segs), int(round(gpu_util * len(right_segs) / 100.0))))
+    
+    # Light up left dots
+    for i in range(left_dots):
+        seg = left_segs[i]
+        grid = seg["grid"]
+        mask = seg["mask"]
+        buf[grid] |= mask
+        
+    # Light up right dots
+    for i in range(right_dots):
+        seg = right_segs[i]
+        grid = seg["grid"]
+        mask = seg["mask"]
+        buf[grid] |= mask
+        
+    return buf
+

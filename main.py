@@ -12,7 +12,7 @@ if dir_path not in sys.path:
     sys.path.insert(0, dir_path)
 
 from cpuidsdk import CPUIDSDK, CPUIDTelemetry
-from layout import show1, show4
+from layout import show1, show4, show5
 from hid import HIDDevice
 
 # Configure logging
@@ -277,7 +277,8 @@ def main():
             # Compute segment buffers
             try:
                 chip1_buf = show1(cpu_temp, gpu_temp, cpu_util, fan_rpm)
-                chip2_buf = show4(left_val, right_val, active_mode)
+                chip2_digits_buf = show4(left_val, right_val, active_mode)
+                chip2_buf = show5(cpu_util, gpu_util, chip2_digits_buf)
             except Exception as e:
                 logger.warning(f"Failed to format segment buffers: {e}")
                 chip1_buf = [0] * 16

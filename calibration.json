@@ -1,0 +1,122 @@
+[
+  {
+    "grid": 6,
+    "mask": 64,
+    "id": "seg_6",
+    "active": false
+  },
+  {
+    "grid": 8,
+    "mask": 64,
+    "id": "seg_8",
+    "active": false
+  },
+  {
+    "grid": 10,
+    "mask": 64,
+    "id": "seg_10",
+    "active": false
+  },
+  {
+    "grid": 12,
+    "mask": 64,
+    "id": "seg_12",
+    "active": false
+  },
+  {
+    "grid": 1,
+    "mask": 1,
+    "id": "seg_14",
+    "active": false
+  },
+  {
+    "grid": 5,
+    "mask": 1,
+    "id": "seg_26",
+    "active": false
+  },
+  {
+    "grid": 3,
+    "mask": 1,
+    "id": "seg_20",
+    "active": false
+  },
+  {
+    "grid": 2,
+    "mask": 64,
+    "id": "seg_2",
+    "active": false
+  },
+  {
+    "grid": 4,
+    "mask": 64,
+    "id": "seg_4",
+    "active": false
+  },
+  {
+    "grid": 0,
+    "mask": 64,
+    "id": "seg_0",
+    "active": false
+  },
+  {
+    "grid": 9,
+    "mask": 1,
+    "id": "seg_38",
+    "active": false
+  },
+  {
+    "grid": 11,
+    "mask": 1,
+    "id": "seg_44",
+    "active": false
+  },
+  {
+    "grid": 0,
+    "mask": 128,
+    "id": "seg_1",
+    "active": false
+  },
+  {
+    "grid": 2,
+    "mask": 128,
+    "id": "seg_3",
+    "active": false
+  },
+  {
+    "grid": 4,
+    "mask": 128,
+    "id": "seg_5",
+    "active": false
+  },
+  {
+    "grid": 7,
+    "mask": 1,
+    "id": "seg_32",
+    "active": false
+  },
+  {
+    "grid": 12,
+    "mask": 128,
+    "id": "seg_13",
+    "active": false
+  },
+  {
+    "grid": 10,
+    "mask": 128,
+    "id": "seg_11",
+    "active": false
+  },
+  {
+    "grid": 8,
+    "mask": 128,
+    "id": "seg_9",
+    "active": false
+  },
+  {
+    "grid": 6,
+    "mask": 128,
+    "id": "seg_7",
+    "active": false
+  }
+]
